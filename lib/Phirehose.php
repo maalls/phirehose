@@ -184,7 +184,7 @@ abstract class Phirehose
     $this->format = $format;
     $this->lang = $lang;
    switch($method){
-        case self::METHOD_USER:$this->URL_BASE = 'https://userstream.twitter.com/2/';break;
+        case self::METHOD_USER:$this->URL_BASE = 'https://userstream.twitter.com/1.1/';break;
         case self::METHOD_SITE:$this->URL_BASE = 'https://sitestream.twitter.com/1.1/';break;
         default:break;  //Stick to the default
         }
@@ -606,7 +606,7 @@ abstract class Phirehose
       }
       
       // Filter takes additional parameters
-      if (($this->method == self::METHOD_FILTER || $this->method == self::METHOD_USER) && count($this->trackWords) > 0) {
+      if (($this->method == self::METHOD_FILTER || $this->method == self::METHOD_USER) && $this->trackWords && count($this->trackWords) > 0) {
         $requestParams['track'] = implode(',', $this->trackWords);
       }
       if ( ($this->method == self::METHOD_FILTER || $this->method == self::METHOD_SITE)
