@@ -610,10 +610,11 @@ abstract class Phirehose
         $requestParams['track'] = implode(',', $this->trackWords);
       }
       if ( ($this->method == self::METHOD_FILTER || $this->method == self::METHOD_SITE)
+	    && $this->followIds 
             && count($this->followIds) > 0) {
         $requestParams['follow'] = implode(',', $this->followIds);
       }
-      if ($this->method == self::METHOD_FILTER && count($this->locationBoxes) > 0) {
+      if ($this->method == self::METHOD_FILTER && $this->locationBoxes && count($this->locationBoxes) > 0) {
         $requestParams['locations'] = implode(',', $this->locationBoxes);
       }
       if ($this->count <> 0) {
